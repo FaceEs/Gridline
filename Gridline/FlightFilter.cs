@@ -24,6 +24,10 @@ namespace Gridnine.FlightCodingTest
         /// <returns></returns>
         public List<Flight> FFiltreOut(List<Flight> flightsIn)
         {
+            if(flightsIn == null || flightsIn.Count == 0)
+            {
+                return null;
+            }
             List<Flight> flightsOut = new List<Flight>();
             switch (_filterType)
             {
@@ -65,8 +69,8 @@ namespace Gridnine.FlightCodingTest
                     }
                     break;
                 default:
-                    break;
-                    
+                    Console.Error.WriteLine("Wrong rule for sort flights");
+                    return null;
             }
             return flightsOut;
         }
@@ -109,7 +113,7 @@ namespace Gridnine.FlightCodingTest
                         return false;
                     }
                 default:
-                    Console.Error.WriteLine("Wrong rule for sort");
+                    Console.Error.WriteLine("Wrong rule for sort segment");
                     return false;
             }
         }
